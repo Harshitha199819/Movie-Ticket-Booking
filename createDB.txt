@@ -1,0 +1,41 @@
+CUSTOMER:
+create table customer(cust_id  int,
+fullname varchar(50)
+username varchar(50),
+mail varchar(50),
+password vachar(50),
+primary key (cust_id));
+
+
+MOVIE:
+create table movie(movie_id  int,
+ actor varchar(50)
+director varchar(50),
+description varchar(50),
+primary key (movie_id));
+
+SEAT MATRIX:
+create table seat_matrix(seat_no int,
+class int,
+row int(1),
+column varchar(1),
+movie_id int references movie(movie_id),
+filled varchar(20),
+show_time int(20),
+primary key(seat_no));
+
+
+TICKETBOOK:
+create table ticketbook(
+cust_id int references   customer(cust_id),
+mail varchar(50),
+seatno int references seat_matrix(seat_no),
+ticketno int,
+primary key(ticketno));
+
+PAY:
+create table pay(
+ticketno int references ticketbook(ticketno),
+amount  int,
+accountno int,
+primary key(ticketno));
